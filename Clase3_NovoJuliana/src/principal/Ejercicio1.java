@@ -13,7 +13,7 @@ public class Ejercicio1 {
 	}
 	public static int[] ordenaNumeros(int nro1,int nro2,int nro3,char orden) {
 		int numeros [] = {nro1,nro2,nro3};
-		if(orden=='a') {
+		if(orden =='a') {
 			Arrays.sort(numeros);
 		}else {
 			for (int i = 0; i< numeros.length-1; i++) {
@@ -27,12 +27,10 @@ public class Ejercicio1 {
 			}
 		}
 		return numeros;
-	}
-	
+	}	
 	public static int [] orden(int nro1,int nro2,int nro3,char orden) {
 		int numeros [] = {nro1,nro2,nro3};
-		switch (orden) {
-		case 'a':
+		if (orden == 'a') {
 			if (nro1>nro2) {
 				if(nro1>nro3) {
 					if (nro2>nro3) {
@@ -66,7 +64,7 @@ public class Ejercicio1 {
 					numeros [2]= nro3;
 				}
 			}
-		case 'd':
+		}else {
 			if (nro1>nro2) {
 				if(nro1>nro3) {
 					if (nro2>nro3) {
@@ -103,7 +101,6 @@ public class Ejercicio1 {
 			}
 		return numeros;
 		}
-
 	public static int sumarMayores(int[] numeros, int nro) {
 		int acumulador;
         acumulador = 0;
@@ -115,5 +112,4 @@ public class Ejercicio1 {
         }
         return acumulador;
 	}
-	
 	}
