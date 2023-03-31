@@ -24,26 +24,53 @@ public class Main {
 		int [] ordenUsuario = Ejercicio1.ordenaNumeros(nro1, nro2, nro3, ordenUs);
 		System.out.println(Arrays.toString(ordenUsuario));
 		//c.
-		int n1 = 0, n2 = 0, n3 = 0;
-		char orden = ' ';
-		if (n1 == 0||n2 == 0||n3 == 0||orden == ' '|| (orden!='a' && orden !='d') ) {
-			if (n1==0) {
-				n1=Ejercicio1.ingresoNumero();
-			}
-			if (n2==0) {
-				n2=Ejercicio1.ingresoNumero();
-			}
-			if (n3==0) {
-				n3=Ejercicio1.ingresoNumero();
-			}
-			if (orden == ' '|| (orden!='a' && orden !='d')) {
-				orden=(char) Ejercicio1.ingresoChar();
-			}
-		}
-		int [] ordenAsc = Ejercicio1.ordenaNumeros(15,n2,20,orden);
+		int [] ordenAsc = Ejercicio1.ordenaNumeros(15,0,20,' ');
 		System.out.println(Arrays.toString(ordenAsc));
 		
-		miScanner.close();
+		//Ejercicio 2
+		String TipoOp="multi";
+		String RutaArc ="D:\\Users\\Juliana\\Documentos\\Argentina Programa\\Java-AP\\Clase4_NovoJuliana\\src\\archivos\\Numeros.txt";	
+		Ejercicio2.sumaNumeros(RutaArc);
+		Ejercicio2.operaNumeros(RutaArc, TipoOp);
+		
+		//Ejercicio 3
+		String PathEntrada="D:\\Users\\Juliana\\Documentos\\Argentina Programa\\Java-AP\\Clase4_NovoJuliana\\src\\archivos\\Entrada.txt";
+		String PathSalida="D:\\Users\\Juliana\\Documentos\\Argentina Programa\\Java-AP\\Clase4_NovoJuliana\\src\\archivos\\Salida.txt";
+		String OpcCodificar;
+	    String IngresoTxt;
+	    int IngresoDesp;
+	    System.out.println("*********** Clase 4 - Ejecicio 3  *************");
+        System.out.println("Ingrese: 1 para Codificar | 2 para Decodificar");
+        OpcCodificar=miScanner.nextLine();
+        System.out.println("Ingrese Desplazamiento:");
+		IngresoDesp=Integer.parseInt(miScanner.nextLine());
+		 
+        switch(OpcCodificar) {
+		case "1": 
+			 System.out.println("Ingrese texto a codificar:");
+			 IngresoTxt=miScanner.nextLine();
+			 Ejercicio3Salida EscriboArchivo= new ArcSalida(IngresoTxt,PathEntrada);
+             EscriboArchivo.EscribirArchivos(); 
+			 Ejercicio3 ClassCod=new codificar(IngresoTxt,IngresoDesp);
+			 Ejercicio3 EscriboArchCod=new ArcSalida(ClassCod.Codificar(),PathCodificado);
+			 EscriboArchCod.EscribirArchivos();
+			 break;
+		case "2":
+			try {
+				Ejercicio3Entrada LeoArchivo=new ArcEntrada(PathCodificado);
+				Ejercicio3 ClassDeco=new decodificar(LeoArchivo.LeerArchivos(),IngresoDesp);
+				Ejercicio3Salida EscriboArcDeco=new ArcSalida(ClassDeco.Decodificar(),PathSalida);
+				EscriboArcDeco.EscribirArchivos();
+				System.out.println("Exito - Se ejecutó correctamente");
+				}
+			catch(Exception e){
+				System.out.println("Error - Hubo problemas y no se ejecutó correctamente: " + e);
+			}
+			
+				break;
+				
+		default:  System.out.println("No existe esa opción");
 	}
-
+	miScanner.close();
+	}
 }

@@ -1,9 +1,24 @@
 package principal;
 import java.util.Arrays;
 import java.util.Scanner;
-
 public class Ejercicio1 {
 	public static int[] ordenaNumeros(int nro1,int nro2,int nro3,char orden) {
+		while (nro1 == 0||nro2 == 0||nro3 == 0||orden == ' '|| (orden!='a' && orden !='d') ) {
+		if (nro1 == 0||nro2 == 0||nro3 == 0||orden == ' '|| (orden!='a' && orden !='d') ) {
+			if (nro1==0) {
+				nro1=Ejercicio1.ingresoNumero();
+			}
+			if (nro2==0) {
+				nro2=Ejercicio1.ingresoNumero();
+			}
+			if (nro3==0) {
+				nro3=Ejercicio1.ingresoNumero();
+			}
+			if (orden == ' '|| (orden!='a' && orden !='d')) {
+				orden=(char) Ejercicio1.ingresoChar();
+			}
+		}
+		}
 		int numeros [] = {nro1,nro2,nro3};
 		if(orden =='a') {
 			Arrays.sort(numeros);
@@ -19,8 +34,7 @@ public class Ejercicio1 {
 			}
 		}
 		return numeros;
-	}	
-	
+	}		
 	public static int ingresoNumero() {
 		Scanner miScanner = new Scanner(System.in);
 		System.out.println("Por favor ingrese un número: ");
